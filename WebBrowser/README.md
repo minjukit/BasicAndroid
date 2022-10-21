@@ -19,10 +19,11 @@
 - 메뉴에서 검색사이트 변경
 - 페이지를 문자나, 메일로 공유
 
+<br>
 
 ---
 
-
+<br>
 
 - 웹뷰 사용법 
 1. settings.javaScriptEnabled 기능 키기
@@ -66,8 +67,10 @@ showAsAction속성을 ifRoom으로 설정
 - 암시적 인텐트
 
 안드로이드 11(api 30)이상의 경우 개인정보에 민감한 암시적 인텐트의 사용이 제한됨.
+
 매니페스트 파일에서 패키지 가시성을 설정해주어야 암시적 인텐트 사용 가능 
-```
+
+```xml
   <queries>
         <intent>
             <action android:name="android.intent.action.SENDTO"/>
