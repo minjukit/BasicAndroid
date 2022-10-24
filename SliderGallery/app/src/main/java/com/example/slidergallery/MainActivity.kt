@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity() {
     private val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()){
         isGranted -> //요청한 권한의 결과
         if (isGranted){
-
             getAllPhotos()
         }else{
 
@@ -58,16 +57,17 @@ class MainActivity : AppCompatActivity() {
                 //읽기 권한 요청
                 requestPermissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
             }
+            return
 
+        }else{// 이미권한허용되었다면
+            getAllPhotos()
         }
-
 
     }
 
     private fun getAllPhotos(){
         val uris = mutableListOf<Uri>() //모든 사진 정보를 담을 리스트
 
-        Log.d("testtt","아무고토")
         //모든 사진 정보 가져오기
         contentResolver.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, //어떤 데이터를 가져오는지 uri형태로 = 외부저장소데이터
             null, null, null,
@@ -87,7 +87,6 @@ class MainActivity : AppCompatActivity() {
         val adapter = PagerAdapter(supportFragmentManager, lifecycle)
         adapter.uris=uris
 
-        Log.d("test", adapter.itemCount.toString())
 
         binding.viewPager.adapter = adapter
 
